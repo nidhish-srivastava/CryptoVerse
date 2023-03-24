@@ -48,7 +48,7 @@ const getData = async() =>{
     setData(response.data)
 }
 useEffect(()=>{
-    // getData()
+     getData()
 },[days])
 
 return(
