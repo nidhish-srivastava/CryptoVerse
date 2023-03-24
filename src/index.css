@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(53, 11, 11);
+    color: white;
+    font-family: 'Rubik',sans-serif;
+}
+a{
+  color: inherit;
+  text-decoration: none;
+}
+p{
+  font-size: 1.3rem;
+}
+
+.navBar{
+    background-color: rgba(0, 0, 255, 0.271);
+    font-size: 1.6rem;
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.searchBarContainer{
+    margin:1rem;
+  display: grid;    
+  place-items: center;
+}
+.searchBar{
+    padding: .6rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    font-size: 1.4rem;
+}
+
+.mainContainer{
+    display: grid;
+    /* border: 2px solid white; */
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+.card{
+    display: flex;
+    /* border: 2px solid white; */
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+
+}
+/* Scrollbar */
+::-webkit-scrollbar{
+    width: 1.2rem;
+  }
+
+  ::-webkit-scrollbar-track{
+    background-color:rgba(255, 255, 255, 0.863);
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background-color: rgb(10, 112, 236);
+    border-radius: 1rem;
+    border: .4rem solid transparent; /*This property wont work until the below waali doesnt work*/
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(49, 49, 100);
+  }
+
+   /* Loader */
+.loader {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    animation: rotate 1s infinite;
+    height: 50px;
+    width: 50px;
+  }
+  
+  .loader:before,
+  .loader:after {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+  .loader:before {
+    animation: ball1 1s infinite;
+    background-color: #fff;
+    box-shadow: 30px 0 0 #ff3d00;
+    margin-bottom: 10px;
+  }
+  .loader:after {
+    animation: ball2 1s infinite;
+    background-color: #ff3d00;
+    box-shadow: 30px 0 0 #fff;
+  }
+  
+  @keyframes rotate {
+    0% { transform: rotate(0deg) scale(0.8) }
+    50% { transform: rotate(360deg) scale(1.2) }
+    100% { transform: rotate(720deg) scale(0.8) }
+  }
+  
+  @keyframes ball1 {
+    0% {
+      box-shadow: 30px 0 0 #ff3d00;
+    }
+    50% {
+      box-shadow: 0 0 0 #ff3d00;
+      margin-bottom: 0;
+      transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #ff3d00;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @keyframes ball2 {
+    0% {
+      box-shadow: 30px 0 0 #fff;
+    }
+    50% {
+      box-shadow: 0 0 0 #fff;
+      margin-top: -20px;
+      transform: translate(15px, 15px);
+    }
+    100% {
+      box-shadow: 30px 0 0 #fff;
+      margin-top: 0;
+    }
+  }
+  
+
+  .singleCryptoContainer{
+      width: 80%;
+      margin: auto;
+      margin-top: 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      place-items: center;
+  }
+
+  .left{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: start;
+  }
+ 
+  .logo{
+font-size: 1.6rem;
+background: linear-gradient(to right, #ea6de8 0%, #91ff00f7 100%);
+-webkit-background-clip: text;
+margin-left: 1rem;
+-webkit-text-fill-color: transparent;
+}
+
+  .chartContainer{
+    margin: auto;
+    width: 80%;
+    padding: 2rem;
+  }
+  .btn{
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+    border: none;
+    margin: 2rem 1rem;
+  }
+
+  /* Mobile Responsive Code */
+  
+  @media (max-width:500px) {
+    .navBar{
+      font-size: 1.1rem;
+      display: flex;
+      padding: 1rem 0;
+      align-items: center;
+      font-size: 1.4rem;
+    }
+    
+    .home-link{
+      display: none;
+    }
+    
+    .mainContainer{
+      display: flex;
+      flex-direction: column;
+      padding: 0.6rem 0;
+    }
+
+    
+    .singleCryptoContainer{
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .singleCryptoContainer img{
+      width: 200px;
+    }
+
+    .chartContainer{
+      /* margin: 0; */
+      width: auto;
+      padding: 0;
+      margin-top: 30%;
+    }
+
+    /* .btn{
+      padding: 0.5rem;
+      border-radius: 0.7rem;
+      border: none;
+      margin: 2rem 1rem;
+    }
+  */
+
+    
+    
+  }
