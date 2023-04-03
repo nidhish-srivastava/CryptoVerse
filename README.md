@@ -9,7 +9,7 @@ Tech Used:
 
 * Hooks used : useState and useEffect
 
-* Styling is done using pure CSS (not mobile responsive at moment)
+* Styling is done using pure CSS (mobile responsive)
 
 * Coingecko api for getting all the data (3 different api's of them)
 
