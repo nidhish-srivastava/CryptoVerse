@@ -9,18 +9,13 @@ function MainPage() {
   const [apiData,setapiData] = useState([])
   const [loading,setLoading] = useState(true)
 
-  const getData = async() =>{
-    try {
-        const response = await axios.get(`https://api.coingecko.com/api/v3/coins/`)
-        console.log(response.data)
-        setapiData(response.data)
-        setLoading(false)
-        
-
-    } catch (error) {
-      setLoading(false)
-        console.log(error)
-    }
+   const getData = async() =>{
+    setLoading(true)
+  // const response = await axios.get(`https://api.coingecko.com/api/v3/coins/list?include_platform=true`)
+    const response = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&per_page=50&page=${pageNumber}`)
+    console.log(response.data)
+    setapiData(response.data)
+    setLoading(false)
   }
 
 
@@ -32,6 +27,13 @@ function MainPage() {
     return <Loader/>
   }
 
+//* PROBLEM --> THIS SEARCH FEATURE SHUD BE APPLIED TO ALL THE 5 PAGES,but it applies to current page
+
+// * Since we are applying the search filter to the array of the page that we are in,
+
+//* SOLUTION IDEA  --> WE MAKE A BIG ARRAY OF ALL THE DATA,search in that of 250,not in that of 50 each
+
+  //* Searching feature
   const searchItems = (searchValue) =>{
     setSearchInput(searchValue)
     // if(searchInput!==''){  //* NO NEED OF THIS COZ I M USING TERNARY IN THE main return statement
@@ -43,25 +45,32 @@ function MainPage() {
     setFilteredResults(final)
   }
 
+  
+  //* Total pages button feature
+  let pagNumberArray = []
+  for(let i=1;i<=Math.ceil(250/50);i++){
+     pagNumberArray.push(i)
+  }
+
 
   return (
     <React.Fragment>
        <div className='searchBarContainer'>
       <h2>List of top 50 CryptoCurrencies</h2>
-    <input type="search" onChange={(e)=>searchItems(e.target.value)} className='searchBar' />
+    {/* <input type="search" onChange={(e)=>searchItems(e.target.value)} className='searchBar' /> */}
       </div>
     <div className='mainContainer'>
     {searchInput.length>1 ? ( 
       filteredResults.map((currEle,index)=>{
-        const {image,name,symbol,id,market_data} = currEle
+         const {image,name,id,current_price} = currEle
         return(
           <Link to={`/${id}`}>
           <div key={index} className='card'>
-            <h2>{index+1}</h2>
-            <img src={image.large} alt="" width='100px' />
+            {/* <h2>{index+1}</h2> */}
+            <img src={image} alt="" width='100px' />
             <div className="details">
             <h2>{name}</h2>
-            <h3>Current Price:₹{market_data.current_price?.inr}</h3>
+            <h3>Current Price:₹{current_price}</h3>
             </div>
             </div>
           </Link>
@@ -72,21 +81,27 @@ function MainPage() {
       
     (
       apiData.map((currEle,index)=>{
-        const {image,name,symbol,id,market_data} = currEle
-      return(
-        <Link to={`/${id}`}>
-        <div key={index} className='card'>
-            <img src={image.large} alt="" width='100px' />
+         const {image,name,id,current_price} = currEle
+        return(
+          <Link to={`/${id}`}>
+          <div key={index} className='card'>
+            {/* <h2>{index+1}</h2> */}
+            <img src={image} alt="" width='100px' />
             <div className="details">
-            <h2>{index+1}.</h2>
             <h2>{name}</h2>
-            <h3>Current Price: ₹{market_data.current_price.inr}</h3>
+            <h3>Current Price:₹{current_price}</h3>
             </div>
-          </div>
-        </Link>
+            </div>
+          </Link>
       )
     }))}
     </div> 
+
+     <div className="button-container">
+      {pagNumberArray.map((e,index)=>(
+        <button key={index} onClick={()=>setPageNumber(e)}>{e}</button>
+      ))}
+    </div>
     </React.Fragment>
   )
 }

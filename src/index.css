@@ -176,6 +176,22 @@ margin-left: 1rem;
     margin: 2rem 1rem;
   }
 
+  .button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .button-container button{
+    padding: 0.2rem .6rem;
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+  }
+
   /* Mobile Responsive Code */
   
   @media (max-width:500px) {
@@ -214,13 +230,6 @@ margin-left: 1rem;
       margin-top: 30%;
     }
 
-    /* .btn{
-      padding: 0.5rem;
-      border-radius: 0.7rem;
-      border: none;
-      margin: 2rem 1rem;
-    }
-  */
 
     
     
