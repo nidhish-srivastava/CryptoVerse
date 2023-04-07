@@ -7,7 +7,8 @@ function MainPage() {
   const [filteredResults,setFilteredResults] = useState([])
   const [searchInput, setSearchInput] = useState('')
   const [apiData,setapiData] = useState([])
-  const [loading,setLoading] = useState(true)
+  const [loading,setLoading] = useState(false)
+  const [pageNumber,setPageNumber] = useState(1)
 
    const getData = async() =>{
     setLoading(true)
@@ -21,7 +22,7 @@ function MainPage() {
 
   useEffect(()=>{
     getData()
-  },[])
+  },[pageNumber])
 
   if(loading){
     return <Loader/>
@@ -56,7 +57,7 @@ function MainPage() {
   return (
     <React.Fragment>
        <div className='searchBarContainer'>
-      <h2>List of top 50 CryptoCurrencies</h2>
+      <h2>List of top 250 CryptoCurrencies</h2>
     {/* <input type="search" onChange={(e)=>searchItems(e.target.value)} className='searchBar' /> */}
       </div>
     <div className='mainContainer'>
