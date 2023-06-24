@@ -19,7 +19,7 @@ function MainPage() {
     setLoading(false)
   }
 
-
+// WE could have used debouncing,but we created a more better way where we conditionally render a newly created array
   useEffect(()=>{
     getData()
   },[pageNumber])
@@ -38,7 +38,9 @@ function MainPage() {
   const searchItems = (searchValue) =>{
     setSearchInput(searchValue)
     // if(searchInput!==''){  //* NO NEED OF THIS COZ I M USING TERNARY IN THE main return statement
-    const final = apiData.filter((item)=>{   // Converting array to string then to lowercase,then checking wether
+    const final = apiData.filter((item)=>{   // Here the input item is an object(since each index of our array is made of objects so)
+      // Converting array to string then to lowercase,then checking wether
+      // Object.values will return an array of strings(not of objects)
       return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase()) 
     })
     // Storing the above inide a variable,passing the variable to our filteredArrayState
@@ -58,7 +60,7 @@ function MainPage() {
     <React.Fragment>
        <div className='searchBarContainer'>
       <h2>List of top 250 CryptoCurrencies</h2>
-    {/* <input type="search" onChange={(e)=>searchItems(e.target.value)} className='searchBar' /> */}
+    <input type="search" onChange={(e)=>searchItems(e.target.value)} className='searchBar' />
       </div>
     <div className='mainContainer'>
     {searchInput.length>1 ? ( 

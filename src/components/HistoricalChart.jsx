@@ -28,20 +28,6 @@ const chartDays = [
       value: 365,
     },
   ];
-// const [dummy,setDummy] = useState({
-//     labels:["Jan","Feb","Mar","Apr"],
-//     datasets:[
-//         {
-//             label:"Histrical Chart",
-//             data:[0,10,4,50],
-//             backgroundColor:'darkgreen',
-//             borderColor:'white',
-//             tension:'0.3',
-//             fill:true,
-            
-//         }
-//     ]
-// })
 const getData = async() =>{    
     const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=inr&days=${days}`)
     console.log(response.data)
