@@ -2,8 +2,12 @@ Used coingecko api to fetch data about cryptocurrencies
 
 Features : 
 
-Search Functionality
+* View top 250 crypto currencies and top 50 trending 
 
-Pagination
+* Search Functionality
 
-Historical Chart view using ChartJs
+* Pagination
+
+* Historical Chart view using ChartJs
+
+* Used react router for routing(it is dynamic as well)
