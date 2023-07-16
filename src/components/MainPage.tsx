@@ -47,6 +47,7 @@ function MainPage() {
      <div className="searchBarContainer">
         <h2>List of top 250 CryptoCurrencies</h2>
         <input
+        autoFocus = {true}
           type="search"
           value={searchInput}
           onChange={(e) => searchItems(e.target.value)}
