@@ -129,7 +129,43 @@ p{
     justify-content: center;
     gap: 0.5rem;
     align-items: center;
+    position: relative;
+}
+.three-dots{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 1.2rem;
+  padding: 0 3rem 0 0;
+}
 
+.modal-container{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgb(41, 41, 41);
+  width: 200px;
+  z-index: 5;
+}
+
+.modal-container label{
+  color: white;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.modal-container label:hover{
+  background-color: #e78522;
+}
+
+.none{
+  display: none;
 }
 /* Scrollbar */
 ::-webkit-scrollbar{
@@ -310,8 +346,5 @@ font-family: 'Open Sans', sans-serif;
       padding: 0;
       margin-top: 30%;
     }
-
-
-    
-    
   }
+
