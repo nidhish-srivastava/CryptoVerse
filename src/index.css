@@ -34,8 +34,10 @@ p{
   display: flex;
   justify-content: center;
   gap: 2rem;
+  padding: 2rem 0 0 2rem;
 }
 .image-wrapper{
+  padding: 1rem;
 }
 
 .image-wrapper img{
@@ -70,6 +72,12 @@ p{
 }
 
 .side-bar{
+  transition: 0.2s;
+  opacity: 0.9;
+  z-index: 4;
+  position: absolute;
+  left: 0;
+  top: 80px;
   display: flex;
   flex-direction: column;
   gap: 2rem;

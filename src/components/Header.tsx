@@ -1,14 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Sidebar from './Sidebar'
 
 type HeaderPropTypes = {
   setToggleState : React.Dispatch<React.SetStateAction<boolean>>
+  toggleState : boolean
 }
 
-function Header({setToggleState} : HeaderPropTypes) {
+function Header({setToggleState,toggleState} : HeaderPropTypes) {
   return (
     <React.Fragment>
         <header className='navBar'>
+          {toggleState && <Sidebar/>}
           <div className="left-side">
             <span className="hamburger" onClick={()=>setToggleState(e=>!e)} >
             <i className="fa-solid fa-bars"></i>
