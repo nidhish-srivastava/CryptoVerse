@@ -10,15 +10,15 @@ type HeaderPropTypes = {
 function Header({setToggleState,toggleState} : HeaderPropTypes) {
   return (
     <React.Fragment>
-        <header className='navBar'>
           {toggleState && <Sidebar/>}
+             <div className='logo'>
+             Crypto$Verse
+             </div>
+        <header className='navBar'>
           <div className="left-side">
             <span className="hamburger" onClick={()=>setToggleState(e=>!e)} >
             <i className="fa-solid fa-bars"></i>
             </span>
-             <Link to='/' className='logo'>
-             Crypto$Verse
-             </Link>
              <Link to='/'>
              Home
              </Link>

@@ -15,9 +15,10 @@ export type apiDataType = {
 
 type MainPagePropTypes = {
   setInterestedCrypto: React.Dispatch<React.SetStateAction<apiDataType[]>>;
+  setAnalyseLater: React.Dispatch<React.SetStateAction<apiDataType[]>>;
 };
 
-function MainPage({ setInterestedCrypto }: MainPagePropTypes) {
+function MainPage({ setInterestedCrypto,setAnalyseLater }: MainPagePropTypes) {
   const [searchInput, setSearchInput] = useState("");
   const [apiData, setApiData] = useState<apiDataType[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
@@ -93,6 +94,10 @@ function MainPage({ setInterestedCrypto }: MainPagePropTypes) {
     // navigate('/interested')
   }
 
+  const analystLaterHandler = (currEle : apiDataType) =>{
+    setAnalyseLater(e=>[...e,currEle])
+  }
+
   return (
     <React.Fragment>
       <div className="searchBarContainer">
@@ -144,7 +149,7 @@ function MainPage({ setInterestedCrypto }: MainPagePropTypes) {
                         {showModal && (
                           <div className="modal-container">
                             <label onClick={()=>favHandler(currEle)}>Add to fav</label>
-                            <label>Add to Analyst Later</label>
+                            <label onClick={()=>analystLaterHandler(currEle)} >Add to Analyst Later</label>
                           </div>
                         )}
                       </span>
