@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { apiDataType } from "./MainPage"
+import { apiDataType } from "./MainPage/MainPage"
 import LazyImage from "./LazyImage"
 
 type AnalyseLaterPropsType = {

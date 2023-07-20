@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { apiDataType } from './MainPage'
+import { apiDataType } from './MainPage/MainPage'
 import LazyImage from './LazyImage'
 
 function Trending() {

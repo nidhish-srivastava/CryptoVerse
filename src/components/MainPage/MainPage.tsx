@@ -1,17 +1,18 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-const LazyImage = lazy(()=>import('./LazyImage'))
-// import LazyImage from "./LazyImage";
-// import Modal from "./Modal";
+const LazyImage = lazy(()=>import('../LazyImage'))
+import PaginatedComponent from "./PaginatedButtons";
+import FilteredResultsCard from "./FilteredResultsCard";
 
 export type apiDataType = {
   image: string;
-  name: string;
+  name?: string;
   id: string;
-  current_price: number;
-  price_change_24h: string;
-  market_cap_rank: number;
+  index?: number
+  current_price?: number;
+  price_change_24h?: string;
+  market_cap_rank?: number;
   hover?: boolean;
 };
 
@@ -120,18 +121,7 @@ function MainPage({ setInterestedCrypto, setAnalyseLater }: MainPagePropTypes) {
           ? filteredResults.map((currEle, index) => {
               const { image, name, id, current_price } = currEle;
               return (
-                <Link to={`/${id}`} key={index}>
-                  <div className="card">
-                    <Suspense fallback={<h2>...</h2>}>
-                      <LazyImage image={image} />
-                    </Suspense>
-                    {/* <img src={image} alt="" width="100px" /> */}
-                    <div className="details">
-                      <h2>{name}</h2>
-                      <h3>Current Price:₹{current_price}</h3>
-                    </div>
-                  </div>
-                </Link>
+               <FilteredResultsCard image={image} name={name} id={id} current_price={current_price} index={index} />
               );
             })
           : apiData.map((currEle, index) => {
@@ -173,16 +163,10 @@ function MainPage({ setInterestedCrypto, setAnalyseLater }: MainPagePropTypes) {
               );
             })}
       </div>
-
-      <div className="button-container">
-        {pagNumberArray.map((e, index) => (
-          <button key={index} onClick={() => setPageNumber(e)}>
-            {e}
-          </button>
-        ))}
-      </div>
+      <PaginatedComponent pageNumberArray={pagNumberArray} setPageNumber={setPageNumber} />
     </React.Fragment>
   );
 }
 
 export default MainPage;
+

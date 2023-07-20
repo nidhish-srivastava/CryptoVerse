@@ -3,7 +3,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
-import MainPage from './components/MainPage'
+import MainPage from './components/MainPage/MainPage'
 import Trending from './components/Trending'
 import GetSingleCoin from './components/GetSingleCoin'
 import Header from './components/Header'
@@ -12,7 +12,7 @@ import {useState} from 'react'
 import Home from './components/Home'
 import Interested from './components/Interested'
 import AnalyseLater from './components/AnalyseLater'
-import { apiDataType } from './components/MainPage'
+import { apiDataType } from './components/MainPage/MainPage'
 
 function App() {
   const [toggleState,setToggleState]=  useState(false)
