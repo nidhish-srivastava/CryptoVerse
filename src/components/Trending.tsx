@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { apiDataType } from './MainPage'
+import LazyImage from './LazyImage'
 
 function Trending() {
     const [trendingData,setTrendingData] = useState<apiDataType[]>([])
@@ -24,7 +25,8 @@ function Trending() {
                 <Link to={`/${id}`}>
                 <div key={index} className='card'>
                   <h2>{index+1}</h2>
-                  <img src={image} alt="" width='100px' />
+                  <LazyImage image={image} />
+                  {/* <img src={image} alt="" width='100px' /> */}
                   <div className="details">
                   <h2>{name}</h2>
                   <h3>Price Change in 24h:{price_change_24h}</h3>

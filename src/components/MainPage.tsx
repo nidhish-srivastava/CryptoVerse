@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+const LazyImage = lazy(()=>import('./LazyImage'))
+// import LazyImage from "./LazyImage";
 // import Modal from "./Modal";
 
 export type apiDataType = {
@@ -18,7 +20,8 @@ type MainPagePropTypes = {
   setAnalyseLater: React.Dispatch<React.SetStateAction<apiDataType[]>>;
 };
 
-function MainPage({ setInterestedCrypto,setAnalyseLater }: MainPagePropTypes) {
+function MainPage({ setInterestedCrypto, setAnalyseLater }: MainPagePropTypes) {
+
   const [searchInput, setSearchInput] = useState("");
   const [apiData, setApiData] = useState<apiDataType[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
@@ -81,6 +84,7 @@ function MainPage({ setInterestedCrypto,setAnalyseLater }: MainPagePropTypes) {
       })
     );
   };
+  
   const clickOnCardHandler = (id: string) => {
     navigate(`/${id}`);
   };
@@ -89,14 +93,14 @@ function MainPage({ setInterestedCrypto,setAnalyseLater }: MainPagePropTypes) {
     setShowModal((e) => !e);
   };
 
-  const favHandler = (currEle : apiDataType) => {
-    setInterestedCrypto(e=>[...e,currEle])
+  const favHandler = (currEle: apiDataType) => {
+    setInterestedCrypto((e) => [...e, currEle]);
     // navigate('/interested')
-  }
+  };
 
-  const analystLaterHandler = (currEle : apiDataType) =>{
-    setAnalyseLater(e=>[...e,currEle])
-  }
+  const analystLaterHandler = (currEle: apiDataType) => {
+    setAnalyseLater((e) => [...e, currEle]);
+  };
 
   return (
     <React.Fragment>
@@ -118,7 +122,10 @@ function MainPage({ setInterestedCrypto,setAnalyseLater }: MainPagePropTypes) {
               return (
                 <Link to={`/${id}`} key={index}>
                   <div className="card">
-                    <img src={image} alt="" width="100px" />
+                    <Suspense fallback={<h2>...</h2>}>
+                      <LazyImage image={image} />
+                    </Suspense>
+                    {/* <img src={image} alt="" width="100px" /> */}
                     <div className="details">
                       <h2>{name}</h2>
                       <h3>Current Price:₹{current_price}</h3>
@@ -138,7 +145,10 @@ function MainPage({ setInterestedCrypto,setAnalyseLater }: MainPagePropTypes) {
                   >
                     {/* <div  className="card"  onMouseEnter={()=>setIsHovered(true)} onMouseLeave={()=>setIsHovered(false)}> */}
                     {/* <h2>{index+1}</h2> */}
-                    <img src={image} alt="" width="100px" />
+                    {/* <img src={image} alt="" width="100px" /> */}
+                    <Suspense fallback={<h2>...</h2>}>
+                      <LazyImage image={image} />
+                    </Suspense>
                     <div className="details">
                       <h2>{name}</h2>
                       <h3>Current Price:₹{current_price}</h3>
@@ -148,8 +158,12 @@ function MainPage({ setInterestedCrypto,setAnalyseLater }: MainPagePropTypes) {
                         <i className="fa-solid fa-ellipsis-vertical"></i>
                         {showModal && (
                           <div className="modal-container">
-                            <label onClick={()=>favHandler(currEle)}>Add to fav</label>
-                            <label onClick={()=>analystLaterHandler(currEle)} >Add to Analyst Later</label>
+                            <label onClick={() => favHandler(currEle)}>
+                              Add to fav
+                            </label>
+                            <label onClick={() => analystLaterHandler(currEle)}>
+                              Add to Analyst Later
+                            </label>
                           </div>
                         )}
                       </span>

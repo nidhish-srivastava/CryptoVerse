@@ -9,7 +9,8 @@ function Home() {
         <div className="image-wrapper">
         <img src={a} alt="" />
         </div>
-        <h1 className="home-page-heading">CryptoVerse: Unleash the Power of Crypto Insights!</h1>
+        <div className="right-side-home">
+        <h1 className="home-page-heading" style={{wordBreak : "break-word"}}>CryptoVerse: Unleash the Power of Crypto Insights!</h1>
         <div className="para-container" style={{padding : '1rem'}} >
         <p>
         Dive into the captivating world of digital assets, where knowledge meets opportunity. Explore real-time data, create personalized portfolios, and stay ahead of the market trends.
@@ -17,6 +18,7 @@ function Home() {
         <p>
         CryptoVerse is your gateway to unparalleled crypto analysis. Join us today and embark on an exhilarating journey to financial freedom in the digital realm!"
         </p>
+        </div>
         </div>
         </div>
     </div>

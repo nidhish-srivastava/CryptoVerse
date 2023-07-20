@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { apiDataType } from "./MainPage"
+import LazyImage from "./LazyImage"
 
 type InterestedPropTypes = {
   interestedCrypto : apiDataType[]
@@ -14,7 +15,8 @@ function Interested({interestedCrypto} :InterestedPropTypes ) {
         return(
           <Link to={`/${e.id}`}>
          <div className="card">
-         <img src={e.image} alt="" width="100px" />
+          <LazyImage image={e.image} />
+         {/* <img src={e.image} alt="" width="100px" /> */}
         <div className="details">
           <h2>{e.name}</h2>
           <h3>Current Price:₹{e.current_price}</h3>

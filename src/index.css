@@ -111,7 +111,6 @@ p {
   gap: 4px;
 }
 
-
 .card {
   display: flex;
   /* border: 2px solid white; */
@@ -141,7 +140,7 @@ p {
   z-index: 5;
 }
 
-.modal-container{
+.modal-container {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -350,40 +349,57 @@ p {
     }
   } */
 
-  @media (min-width : 800px) {
-    .card{
-      position: relative;
-    }
+@media (min-width: 800px) {
+  .card {
+    position: relative;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mainContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+    gap: 3rem;
+    padding: 3rem;
+  }
+  .side-bar {
+    width: 20%;
+  }
+  .navBar {
+    margin-bottom: 2rem;
+  }
+  .navBar a {
+    font-size: 1.52rem;
+  }
+  .page-description {
+    align-items: center;
+    flex-direction: row;
   }
 
-  @media (min-width : 1024px) {
-    .navBar{
-      margin-bottom: 2rem;
-    }
-    .navBar a{
-      font-size: 1.52rem;
-    }
-    .page-description{
-      align-items: center;
-    }
-    .image-wrapper{
-         margin-left : 4rem;
-    }
-    .image-wrapper img{
-      width: 80%;
-    }
+  .page-description .right-side-home {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
   }
+  .image-wrapper {
+    padding: 3rem;
+    width: 50%;
+  }
+  .image-wrapper img {
+    width: 100%;
+  }
+}
 
-  @media (min-width : 1440px) {
-    .para-container p{
-      max-width: 70%;
-      margin: 0 auto;
-    }
-    .image-wrapper{
-      width: 60%;
-      margin-left: 0;
-    }
-    .image-wrapper img{
-      width: 100%;
-    }
+@media (min-width: 1440px) {
+  .para-container p {
+    max-width: 70%;
+    margin: 0 auto;
   }
+  .image-wrapper {
+    width: 60%;
+    margin-left: 0;
+  }
+  .image-wrapper img {
+    width: 100%;
+  }
+}
